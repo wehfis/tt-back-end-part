@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, literal } = require('sequelize');
 
 module.exports = sequelize => {
     const Receipt = sequelize.define('Receipt', {
@@ -15,6 +15,7 @@ module.exports = sequelize => {
         },
         date: {
             type: DataTypes.DATE,
+            defaultValue: literal('CURRENT_TIMESTAMP'),
             allowNull: false,
         },
         total: {
