@@ -40,7 +40,27 @@ const closeReceipt = async (req, res) => {
     }
 };
 
+const removeReceipt = async (req, res) => {
+    try {
+        const { receiptId } = req.params;
+
+        const receipt = await ReceiptModel.findByPk(receiptId);
+    
+        if (!receipt) {
+            return res.status(404).json({ message: 'Receipt not found' });
+        }
+    
+        await receipt.destroy();
+        res.json({ message: 'Receipt removed' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+
 module.exports = {
     createReceipt,
-    closeReceipt
+    closeReceipt,
+    removeReceipt
 }
