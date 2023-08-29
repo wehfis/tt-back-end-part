@@ -20,11 +20,11 @@ module.exports = sequelize => {
         },
         total: {
             type: DataTypes.DECIMAL(10, 2),
-            allowNull: false,
+            allowNull: true,
         },
         closed: {
             type: DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         }
     });
 
